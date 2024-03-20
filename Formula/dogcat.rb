@@ -12,7 +12,7 @@ class Dogcat < Formula
   # depends_on xcode: ["12.5", :build]
   depends_on :macos
   depends_on "ncurses"
-  depends_on "homebrew/cask/android-platform-tools"
+  depends_on "android-platform-tools"
 
   def install
     ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
