@@ -16,8 +16,8 @@ class Dogcat < Formula
     ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
     mac_suffix = Hardware::CPU.intel? ? "X64" : Hardware::CPU.arch.to_s.capitalize
     build_task = "linkReleaseExecutableNativeMac#{mac_suffix}"
-    system "gradle", "clean", build_task
-    bin.install "dogcat/build/bin/nativeMac#{mac_suffix}/releaseExecutable/dogcat.kexe" => "dogcat"
+    system "./gradlew", build_task
+    bin.install "build/bin/nativeMac#{mac_suffix}/releaseExecutable/dogcat.kexe" => "dogcat"
   end
 
   test do
