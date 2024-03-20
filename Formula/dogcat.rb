@@ -3,7 +3,7 @@ class Dogcat < Formula
   homepage "https://github.com/NorseDreki/dogcat"
   url "https://github.com/NorseDreki/dogcat/archive/refs/heads/main.tar.gz"
   version "0.9-RC"
-  sha256 :no_check
+  sha256 "06b208f29556536016d8edd7d1012d964367b144cd43d8d48432fcba360932cf"
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
