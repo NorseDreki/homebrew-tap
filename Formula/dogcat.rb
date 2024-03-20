@@ -1,6 +1,6 @@
 class Dogcat < Formula
-  desc "A terminal-based Android Logcat reader with sane colouring"
-  homepage "https://github.com/NorseDreki/dogcat.git"
+  desc "Terminal-based Android Logcat reader with sane colouring"
+  homepage "https://github.com/NorseDreki/dogcat"
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git"
 
@@ -24,6 +24,6 @@ class Dogcat < Formula
     output = shell_output(bin/"kdoctor -v")
     assert_match "0.9-RC", output
 
-    #assert_match version.to_s, shell_output("#{bin}/kdoctor --version")
+    # assert_match version.to_s, shell_output("#{bin}/kdoctor --version")
   end
 end
