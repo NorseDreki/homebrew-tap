@@ -1,31 +1,29 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Dogcat < Formula
-  desc "Dog cat"
-  homepage ""
-  license ""
+  desc "A terminal-based Android Logcat reader with sane colouring"
+  homepage "https://github.com/NorseDreki/dogcat.git"
+  license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git"
 
-  # depends_on "cmake" => :build
+  depends_on "gradle" => :build
+  depends_on "openjdk" => :build
+  depends_on xcode: ["12.5", :build]
+  depends_on :macos
 
   def install
-    # Remove unrecognized options if they cause configure to fail
-    # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
-    system "./configure", "--disable-silent-rules", *std_configure_args
-    # system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
+    mac_suffix = Hardware::CPU.intel? ? "X64" : Hardware::CPU.arch.to_s.capitalize
+    build_task = "linkReleaseExecutableNativeMac#{mac_suffix}"
+    system "gradle", "clean", build_task
+    bin.install "dogcat/build/bin/nativeMac#{mac_suffix}/releaseExecutable/dogcat.kexe" => "dogcat"
   end
 
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test dogcat`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "false"
+    output = shell_output("#{bin}/kdoctor -c")
+    assert_match "Resolving", output
+
+    output = shell_output(bin/"kdoctor -v")
+    assert_match "0.9-RC", output
+
+    #assert_match version.to_s, shell_output("#{bin}/kdoctor --version")
   end
 end
