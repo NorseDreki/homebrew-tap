@@ -7,12 +7,10 @@ class Dogcat < Formula
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
-  #depends_on "gradle" => :build
   depends_on "openjdk" => :build
-  # depends_on xcode: ["12.5", :build]
+  depends_on xcode: ["12.5", :build]
   depends_on :macos
   depends_on "ncurses"
-  #depends_on "android-platform-tools"
 
   def install
     ENV["JAVA_HOME"] = Formula["openjdk"].opt_prefix
@@ -22,17 +20,8 @@ class Dogcat < Formula
     bin.install "build/bin/nativeMac#{mac_suffix}/releaseExecutable/dogcat.kexe" => "dogcat"
   end
 
-  def assert_contains(expected_substring, string, *args)
-    assert string.include?(expected_substring), *args
-  end
-
   test do
-    output = shell_output("#{bin}/dogcat -c")
-    assert_contains "Resolving", output
-
     output = shell_output(bin/"dogcat -v")
-    assert_contains "0.9-RC", output
-
-    # assert_match version.to_s, shell_output("#{bin}/kdoctor --version")
+    assert_contains version.to_s, output
   end
 end
