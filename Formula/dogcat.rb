@@ -22,6 +22,6 @@ class Dogcat < Formula
 
   test do
     output = shell_output(bin/"dogcat -v")
-    assert_contains version.to_s, output
+    assert_match version.to_s, output
   end
 end
