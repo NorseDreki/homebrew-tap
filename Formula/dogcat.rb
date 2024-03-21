@@ -22,12 +22,16 @@ class Dogcat < Formula
     bin.install "build/bin/nativeMac#{mac_suffix}/releaseExecutable/dogcat.kexe" => "dogcat"
   end
 
+  def assert_contains(expected_substring, string, *args)
+    assert string.include?(expected_substring), *args
+  end
+
   test do
     output = shell_output("#{bin}/dogcat -c")
-    assert_match "Resolving", output
+    assert_contains "Resolving", output
 
     output = shell_output(bin/"dogcat -v")
-    assert_match "0.9-RC", output
+    assert_contains "0.9-RC", output
 
     # assert_match version.to_s, shell_output("#{bin}/kdoctor --version")
   end
