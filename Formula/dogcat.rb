@@ -7,6 +7,12 @@ class Dogcat < Formula
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
+  bottle do
+    root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.9-RC"
+    rebuild 1
+    sha256 cellar: :any, ventura: "e626cbbd743d3c22f60fd6709bc3235afa37dcc6099e0faff4ca07b98c2c55b3"
+  end
+
   depends_on "openjdk" => :build
   depends_on xcode: ["12.5", :build]
   depends_on :macos
