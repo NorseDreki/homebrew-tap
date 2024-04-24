@@ -7,8 +7,6 @@ class Dogcat < Formula
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
-  pour_bottle? only_if: :x86_64
-
   bottle do
     root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.9-RC"
     rebuild 1
