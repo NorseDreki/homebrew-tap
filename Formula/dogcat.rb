@@ -27,6 +27,6 @@ class Dogcat < Formula
 
   test do
     output = shell_output(bin/"dogcat -v")
-    assert_match 'RC', output
+    assert_match "RC", output
   end
 end
