@@ -1,5 +1,5 @@
 class Dogcat < Formula
-  desc "Terminal-based Android Logcat reader with sane colouring"
+  desc "Handy terminal-based Android Logcat reader with convenient colors"
   homepage "https://github.com/NorseDreki/dogcat"
   url "https://github.com/NorseDreki/dogcat/archive/refs/tags/0.0.9.tar.gz"
   sha256 "896e65b50216618e44038b02c59aa61c403c18beb16dda0a913d7af53bd646d2"
@@ -9,6 +9,11 @@ class Dogcat < Formula
   bottle do
     root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.0.9"
     sha256 cellar: :any, monterey: "8ce4b32966579a2245bfac728908ba9ac327409aecbd08a4a4ede232ce0fee21"
+  end
+
+  livecheck do
+    url :stable
+    regex(/^(\d+\.\d+\.\d+)$/i)
   end
 
   depends_on "openjdk" => :build
@@ -26,6 +31,6 @@ class Dogcat < Formula
 
   test do
     output = shell_output(bin/"dogcat -v")
-    assert_match "RC", output
+    assert_match "Dogcat", output
   end
 end
