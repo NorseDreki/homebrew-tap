@@ -1,8 +1,8 @@
 class Dogcat < Formula
   desc "Terminal-based Android Logcat reader with sane colouring"
   homepage "https://github.com/NorseDreki/dogcat"
-  url "https://github.com/NorseDreki/dogcat/archive/refs/tags/0.0.7.tar.gz"
-  sha256 "8cf68ea4a82dab609fb7bc264f8fbb9febb9a03146aadd28b9fc160ff2242143"
+  url "https://github.com/NorseDreki/dogcat/archive/refs/tags/0.0.9.tar.gz"
+  sha256 "896e65b50216618e44038b02c59aa61c403c18beb16dda0a913d7af53bd646d2"
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
