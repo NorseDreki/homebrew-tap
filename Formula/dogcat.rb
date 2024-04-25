@@ -6,14 +6,14 @@ class Dogcat < Formula
   license "Apache-2.0"
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
-  bottle do
-    root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.0.9"
-    sha256 cellar: :any, monterey: "8ce4b32966579a2245bfac728908ba9ac327409aecbd08a4a4ede232ce0fee21"
-  end
-
   livecheck do
     url :stable
     regex(/^(\d+\.\d+\.\d+)$/i)
+  end
+
+  bottle do
+    root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.0.9"
+    sha256 cellar: :any, monterey: "8ce4b32966579a2245bfac728908ba9ac327409aecbd08a4a4ede232ce0fee21"
   end
 
   depends_on "openjdk" => :build
