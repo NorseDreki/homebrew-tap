@@ -7,8 +7,8 @@ class Dogcat < Formula
   head "https://github.com/NorseDreki/dogcat.git", branch: "main"
 
   bottle do
-    root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.0.7"
-    sha256 cellar: :any, ventura: "2f264c2b2c1f969556bd2f4a14d8310a9885390bdcb2b4a535da56a9f3032c12"
+    root_url "https://github.com/NorseDreki/homebrew-tap/releases/download/dogcat-0.0.9"
+    sha256 cellar: :any, monterey: "8ce4b32966579a2245bfac728908ba9ac327409aecbd08a4a4ede232ce0fee21"
   end
 
   depends_on "openjdk" => :build
